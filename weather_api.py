@@ -1,9 +1,11 @@
 import requests
 import pandas as pd
 from google.cloud import bigquery
-from datetime import datetime, timedelta
+from dotenv import load_dotenv
+import os
 
-API_KEY = "I9zn-apKQjec5_mqSkI3nQ"
+load_dotenv()
+API_KEY = os.getenv("WEATHER_API_KEY")
 
 PROJECT_ID = "subway-weather"
 DATASET_ID = "weather_dataset"

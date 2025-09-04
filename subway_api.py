@@ -10,11 +10,14 @@ import requests           # API 호출용
 import pandas as pd       # 데이터프레임 다루기
 from google.cloud import bigquery   # BigQuery 연결용
 from datetime import datetime
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 # ==============================
 # 2. 기본 설정
 # ==============================
-API_KEY = "7078446565736f6f3130384c51784671"
+API_KEY = os.getenv("SUBWAY_API_KEY")
 
 PROJECT_ID = "subway-weather"
 DATASET_ID = "subway_dataset"            # BigQuery에서 미리 만든 데이터셋 이름
