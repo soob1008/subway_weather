@@ -26,18 +26,6 @@ while (year < end_year) or (year == end_year and month <= end_month):
     last_day = calendar.monthrange(year, month)[1]
     tm1 = f"{year}{month:02d}010000"
     tm2 = f"{year}{month:02d}{last_day:02d}2359"
-# 1. 기간 (월 단위) 정의
-start_year, start_month = 2024, 1
-end_year, end_month = 2025, 9
-
-# 월별 데이터 누적
-dfs = []
-
-year, month = start_year, start_month
-while (year < end_year) or (year == end_year and month <= end_month):
-    last_day = calendar.monthrange(year, month)[1]
-    tm1 = f"{year}{month:02d}010000"
-    tm2 = f"{year}{month:02d}{last_day:02d}2359"
 
     # 2. API 호출
     url = (
@@ -50,7 +38,7 @@ while (year < end_year) or (year == end_year and month <= end_month):
     # 패 응답을 다음 단계로 넘기지 않고 초기에 실패를 감지해서 디버깅/재시도 처리를 쉽게 하려고 쓴다.
     res.raise_for_status()
     # res.text는 이 encoding을 써서 바이트 → 문자열로 디코딩하기 때문. (한글 깨짐 방지)
-    res.encoding = "uft-8"
+    res.encoding = "utf-8"
     # 디코딩된 본문 문자열을 가져와서 앞뒤 공백/개행을 제거.
     raw_text = res.text.strip()
 
